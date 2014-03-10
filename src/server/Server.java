@@ -27,13 +27,7 @@ public class Server extends Thread{
 				users.add(client);
 				
 				new MessageThread(client).start();
-				
-				if (users.isEmpty()){
-					break;
-				}
 			}
-			
-			server.close();
 			
 		} catch (IOException e) {
 			e.printStackTrace();

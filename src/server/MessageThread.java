@@ -19,17 +19,15 @@ public class MessageThread extends Thread {
 	public void run() {
 		try {
 			reader = new BufferedReader(new InputStreamReader(s.getInputStream()));
-			boolean done = false;
 			
-			
-			while (!done){
+			while (true){
 				setMessage(reader.readLine());	
 				
 				if(getMessage() == null) {
-					done = true;
 					Server.users.remove(this.s);
-					
 					System.out.println("1 usuário ficou offline!");
+					
+					break;
 				} else {
 					System.out.println("Recebendo : " + getMessage());
 					System.out.println("Online: " + Server.users.size());
