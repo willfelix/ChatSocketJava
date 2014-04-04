@@ -25,7 +25,7 @@ public class MessageThread extends Thread {
 				
 				if(getMessage() == null) {
 					Server.users.remove(this.s);
-					System.out.println("1 usu·rio ficou offline!");
+					System.out.println("1 usu√°rio ficou offline!");
 					
 					break;
 				} else {

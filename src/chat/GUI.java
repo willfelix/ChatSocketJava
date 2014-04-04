@@ -17,12 +17,16 @@ import javax.swing.JPanel;
 
 public class GUI extends JFrame {
 	private static final long serialVersionUID = 2463885357441348191L;
-	private Chat chat;
+	private ChatUDP chat;
 	public static TextArea messages;
 	
-	public GUI() {
+	public GUI(){
+		this(false);
+	}
+	
+	public GUI(boolean isUDP) {
 		super("Msn do Will");
-		chat = new Chat();
+		chat = new ChatUDP();
 		chat.start();
 		
 		addChatBox();
@@ -48,7 +52,6 @@ public class GUI extends JFrame {
 		messages.setFocusable(false);
 		messages.setCursor(Cursor.getDefaultCursor());
 		messages.setBackground(Color.LIGHT_GRAY);
-		
 		
 		JPanel panel = new JPanel(new GridLayout(1, 2));
 		final TextField write = new TextField();
@@ -81,6 +84,7 @@ public class GUI extends JFrame {
 					String message = write.getText();
 					write.setText("");
 					write.setFocusable(true);
+					System.out.println(message);
 					
 					chat.sendMessage(message);
 				}
